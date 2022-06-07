@@ -10,10 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2764431080215843376}
   - component: {fileID: 2764431080215843382}
-  - component: {fileID: 2764431080215843383}
   - component: {fileID: 2764431080215843381}
-  - component: {fileID: 2764431080215843380}
   - component: {fileID: 9129543420829153523}
+  - component: {fileID: 2427074269977006691}
   m_Layer: 0
   m_Name: BasicItem
   m_TagString: Item
@@ -86,23 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2764431080215843383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2764431080215843377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 429aa1d379ba525498f5337fa7633a26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxCount: 99
-  _typeItem: 0
-  _idItem: -1
-  _nameItem: Item
-  _descriptionItem: None
 --- !u!50 &2764431080215843381
 Rigidbody2D:
   serializedVersion: 4
@@ -124,23 +106,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &2764431080215843380
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2764431080215843377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 429aa1d379ba525498f5337fa7633a26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxCount: 99
-  _typeItem: 4
-  _idItem: -1
-  _nameItem: Item
-  _descriptionItem: None
 --- !u!61 &9129543420829153523
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -167,3 +132,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.64, y: 0.64}
   m_EdgeRadius: 0
+--- !u!114 &2427074269977006691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2764431080215843377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 429aa1d379ba525498f5337fa7633a26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxCount: 99
+  _typeItem: 4
+  _idItem: -1
+  _nameItem: Item
+  _iconItem: {fileID: 21300000, guid: 95efaacf912c287499eeeceec55bbfea, type: 3}
+  _descriptionItem: 
