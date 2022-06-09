@@ -1,24 +1,43 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using System;
 
 public class Inventory : MonoBehaviour
 {
 
     [Tooltip("Cells in inventory.")]
-    [SerializeField] private Cell[] _cellsInventory;
+    [ContextMenuItem("Set children as cells", "SetChildrenCell")]
+    [SerializeField] private List<Cell> _cellsInventory;
 
-    private Cell[] _busyCells;
+    private delegate bool correctCell(Cell cell);
 
-
-    public void AddItem(Item itemAdd, int countItem) {
-        foreach (Cell busyCell in _busyCells)
+    private int ParsingInventory(correctCell func, int countToAdd) {
+        foreach (Cell cell in _cellsInventory.Where(Cell => func(Cell)).ToList())
         {
-            if (busyCell.Full) continue;
+            int space = cell.Item.MaxCount - cell.CountItems;
+            cell.AddItem((space >= countToAdd) ? countToAdd : space);
+            countToAdd -= (space >= countToAdd)? countToAdd: space;
+            if (countToAdd == 0) return 0;
+        }
+        return countToAdd;
+    }
 
-            if (busyCell.Item.ID == itemAdd.ID) {
-                
+    public void AddItem(Item itemAdd, int CountItems) {
+        int countToAdd = CountItems;    
+        countToAdd = ParsingInventory(Cell => (!Cell.Full && Cell.Item.ID == itemAdd.ID), countToAdd);
+        countToAdd = ParsingInventory(Cell => (Cell.Item.ID == -1), countToAdd);
+
+    } 
+
+    private void SetChildrenCell() {
+        for (int i = 0; i < gameObject.transform.childCount; i ++) {
+            GameObject possibleCell = transform.GetChild(i).gameObject;
+            if (possibleCell.tag == "Cell") {
+                _cellsInventory.Add(possibleCell.GetComponent<Cell>());
             }
         }
     }
+
+
 }

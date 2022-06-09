@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using TMPro;
 
@@ -40,6 +39,12 @@ public class Cell : MonoBehaviour
     ///<summary>
     /// Sets a icon of item in cell. Called after add a new item to void cell.
     ///</summary>
+
+    public void AddItem(int count) {
+        _countItems += count;
+        _fullCell = count == Item.MaxCount;
+        
+    }
     public void SetIcon() {
         _imageIcon = _itemIn.Icon;
     }
