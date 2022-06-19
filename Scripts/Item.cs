@@ -1,27 +1,21 @@
-
 using UnityEngine;
 using System;
 
 // Need to copypast: --------------------
 
-public class Item : MonoBehaviour
+public class Item : MonoBehaviour, ICloneable
 {
-    
-    public enum ItemType
-    {
-        WEAPON,
-        COIN,
-        ARMOR,
-        AIRWEAPON,
-        ITEM
-    }
-
     private const int DEFAULT_MAX_COUNT = 99;
     private const ItemType DEFAULT_TYPE_ITEM = ItemType.ITEM;
     private const int DEFAULT_ID_ITEM = -1;
     private const string DEFAULT_NAME_ITEM = "Item";
     private const string DEFAULT_DESC_ITEM = null;
 
+    private GameObject _itemObject;
+    public GameObject ObjectItem {
+        get {return _itemObject;}
+        set {_itemObject = value;}
+    }
 
     [Header("--------------------Required fields--------------------")]
 
@@ -71,7 +65,22 @@ public class Item : MonoBehaviour
         get {return _descriptionItem;}
     }
 
+    public object Clone()
+    {
+        return MemberwiseClone();
+    }
+
+    public void Set(int max, ItemType type, int id, string name, string desc, Sprite icon) {
+        this._maxCount = max;
+        this._typeItem = type;
+        this._idItem = id;
+        this._nameItem = name;
+        this._descriptionItem = desc;
+        this._iconItem = icon;
+    }
+
     private void Start() {
+        _itemObject = this.gameObject;
         switch (_typeItem)
         {
             case ItemType.WEAPON:
