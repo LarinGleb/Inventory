@@ -29,6 +29,17 @@ public class VoidItem
         }
 
     }
+    [MenuItem("Inventory/Create Coin", priority = -13)]
+
+    private static void CreateCoin() {
+        GameObject BasicCoin= (GameObject)PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<Object>("Assets/Inventory/Prefabs/BasicCoin.prefab"));
+
+        BasicCoin.name = "BasicCoin";
+
+        BasicCoin.transform.localPosition = Vector3.zero;
+        BasicCoin.transform.localEulerAngles = Vector3.zero;
+        Selection.activeGameObject = BasicCoin;
+    }
 }
 
 #endif
